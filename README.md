@@ -18,7 +18,7 @@ Learn more about Slidev on [documentations](https://sli.dev/).
 
 ### Roadmap
 
-- [ ] JFR + JMC examples
-- [ ] NativeMemoryTracking examples
-- [ ] deploy: github action + github pages
-- [ ] slidev: pagenation
+- [x] JFR + JMC examples
+- [x] NativeMemoryTracking examples
+- [x] deploy: github action + github pages
+- [x] slidev: pagenation with theme [academic](https://github.com/alexanderdavide/slidev-theme-academic)

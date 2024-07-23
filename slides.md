@@ -1,9 +1,12 @@
 ---
 # try also 'default' to start simple
-theme: dracula
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
+theme: academic
+layout: cover
+coverAuthor: saveole
+coverAuthorUrl: https://github.com/saveole
+coverBackgroundUrl: ./assets/cover.jpg
+# coverBackgroundSource: unsplash
+# coverBackgroundSourceUrl: https://images.unsplash.com/photo-1721406769891-f2ba651401d9?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 # some information about your slides, markdown enabled
 title: java_app_build_docker_image
 info: |
@@ -12,35 +15,26 @@ info: |
 
   Learn more at [Sli.dev](https://sli.dev)
 # apply any unocss classes to the current slide
-class: text-center
+class: text-white
 # https://sli.dev/custom/highlighters.html
 highlighter: shiki
 # https://sli.dev/guide/drawing
 drawings:
   persist: false
 # slide transition: https://sli.dev/guide/animations#slide-transitions
-transition: slide-left
+transition: fade-out
 # enable MDC Syntax: https://sli.dev/guide/syntax#mdc-syntax
 mdc: true
 download: "https://little-ant.oss-cn-hangzhou.aliyuncs.com/pdf/how_to_build_java_app_docker_image.pdf"
 exportFilename: how_to_build_java_app_docker_image.pdf
 ---
 
-# Java 应用程序构建 Docker 镜像的几种方式
+# Java 应用构建 Docker 镜像
 
 How to build Docker images for Java applications?
 
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
-  </span>
-</div>
-
 <div class="abs-br m-6 flex gap-2">
-  <!-- <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button> -->
-  <a href="https://github.com/saveole/saveole_slides/tree/main/java_app_build_docker_image" target="_blank" alt="GitHub" title="Open in GitHub"
+  <a href="https://github.com/saveole/java_app_build_docker_image" target="_blank" alt="GitHub" title="Open in GitHub"
     class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
     <carbon-logo-github />
   </a>

@@ -40,7 +40,7 @@ jobs:
       - name: Install slidev
         run: npm i -g @slidev/cli
       - name: Build
-        run: slidev build --base /java-app-build-docker-image/
+        run: slidev build --base /java_app_build_docker_image/
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

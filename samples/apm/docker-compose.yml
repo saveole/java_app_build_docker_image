@@ -1,0 +1,98 @@
+version: "3.7"
+
+services:
+  prometheus:
+    image: dockerproxy.cn/prom/prometheus:latest
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      #- ./data:/prometheus/data
+    ports:
+      - 9090:9090
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus/data"
+      - "--web.console.templates=/etc/prometheus/console_templates"
+    depends_on:
+      - node-exporter
+      #- cadvisor
+
+  grafana:
+    image: dockerproxy.cn/grafana/grafana:latest
+    volumes:
+      - ./grafana/grafana-datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+      - ./grafana/grafana-all-dashboards.yml:/etc/grafana/provisioning/dashboards/all.yml
+      - ./grafana/1860_node_exporter.json:/var/lib/grafana/dashboards/node-exporter.json
+      - ./grafana/17053_Spring_Boot_Endpoint_Metrics_2.0.json:/var/lib/grafana/dashboards/Spring_Boot_Endpoint_Metrics_2.0.json
+    ports:
+      - 3000:3000
+    environment:
+      GF_INSTALL_PLUGINS: grafana-simple-json-datasource
+    depends_on:
+      - prometheus
+
+  node-exporter:
+    image: dockerproxy.cn/prom/node-exporter:latest
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 9100:9100
+
+  scrm-api:
+    image: scrmapi:admin-client
+    ports:
+      - 9080:8080
+    environment:
+      - SPRING_BOOT_ADMIN_CLIENT_URL=http://admin-server:8080
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+          cpus: 2.0
+    volumes:
+      - ./recordings:/recordings
+      - ./scripts/myprofile.jfc:/myprofile.jfc
+    depends_on:
+      - admin-server
+
+  chat-app:
+    image: chat:layers
+    ports:
+      - 9081:8080
+    environment:
+      - SPRING_BOOT_ADMIN_CLIENT_URL=http://admin-server:8080
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: 2.0
+    depends_on:
+      - admin-server
+
+  admin-server:
+    image: admin-server:layers
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: 2.0
+    ports:
+      - 8080:8080
+
+  #cadvisor:
+  #image: dockerproxy.cn/chainguard/cadvisor:latest
+  #volumes:
+  #  - /:/rootfs:ro
+  #  - /var/run/docker.sock:/var/run/docker.sock
+  #  - /sys:/sys:ro
+  #  - /proc:/proc:ro
+  #ports:
+  #  - 8080:8080
+  #command:
+  #  - "--storage_path=/data"
+  #  - "--db_path=/data"
+  #  - "--http_port=8080"
+
+volumes:
+  data:

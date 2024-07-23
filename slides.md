@@ -250,18 +250,10 @@ Spring-Boot-Layers-Index: BOOT-INF/layers.idx
   - [Slidev](https://cn.sli.dev/)
 
 ---
+layout: center
+class: "text-center"
+---
 
-<h1> Thank You 🙏 </h1>
+# Thanks for Listening!
 
-<style>
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  h1 {
-    text-align: center;
-  }
-</style>
+<br />

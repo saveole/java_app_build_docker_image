@@ -4,7 +4,7 @@ theme: academic
 layout: cover
 coverAuthor: saveole
 coverAuthorUrl: https://github.com/saveole
-coverBackgroundUrl: ./public/cover.jpg
+coverBackgroundUrl: /cover.jpg
 # coverBackgroundSource: unsplash
 coverBackgroundSourceUrl: https://images.unsplash.com/photo-1721736134606-984c6c961c04?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 # some information about your slides, markdown enabled
@@ -73,18 +73,18 @@ Docker is an open platform for developing, shipping, and running applications. D
 
 <v-clicks>
 
-- 镜像相关: 
+- 镜像相关:
   - <kbd>pull</kbd> / <kbd>push</kbd>
   - <kbd>load</kbd> / <kbd>save</kbd>
   - <kbd>history</kbd>
-- 容器相关: 
+- 容器相关:
   - <kbd>run</kbd> / <kbd>exec</kbd>
   - <kbd>cp</kbd>
   - <kbd>ps</kbd>
   - <kbd>stats</kbd>
   - <kbd>inspect</kbd>
   - <kbd>logs</kbd>
-- 构建相关: 
+- 构建相关:
   - <kbd>build</kbd> / <kbd>[镜像分层分阶段](https://docs.docker.com/build/guide/layers/)</kbd> / <kbd>[构建缓存](https://docs.docker.com/build/cache/)</kbd>
 
 </v-clicks>
@@ -149,7 +149,7 @@ ENTRYPOINT java --enable-preview \
 
 # 镜像分层
 
-<img src="https://dongshu.oss-cn-hangzhou.aliyuncs.com/scrm_front/ff3e6ed2a0124e35ae3f8000ce42774clayers.png" />
+<img src="/layers.png" class="m-0 h-90 rounded shadow" />
 
 ---
 
@@ -227,13 +227,52 @@ Spring-Boot-Layers-Index: BOOT-INF/layers.idx
 <img src="/Determine-GC.png" class="m-0 h-100 rounded shadow" />
 
 ---
+layout: 2x2-grid-header
+---
 
 # APM
 
-- 主机监控 - Node Exporter + [Prometheus](http://192.168.3.9:9090) + [Grafana](http://192.168.3.9:3000)
-- 容器监控 - Cadvisor
-- 应用监控 - [Spring-Boot-Admin](http://192.168.3.9:8080/applications)
-- 方法监控 - [JFR](https://openjdk.org/jeps/328) + [OpenTelemetry](https://spring.io/blog/2022/10/12/observability-with-spring-boot-3)
+
+::topleft::
+
+<v-click>
+
+### 1. 主机监控 - [Node Exporter](http://192.168.3.9:3000)
+
+<img src="/node-exporter.png" class="m-2 h-40 rounded shadow" />
+
+</v-click>
+
+::topright::
+
+<v-click>
+
+### 2. 容器监控 - [Cadvisor](http://192.168.3.9:8090)
+
+<img src="/stats.png" class="m-2 h-40 rounded shadow" />
+
+</v-click>
+
+::bottomleft::
+
+<v-click>
+
+### 3. 应用监控 - [Spring-Boot-Admin](http://192.168.3.9:8080/applications)
+
+<img src="/spring-boot-admin.png" class="m-2 h-40 rounded shadow" />
+
+</v-click>
+
+::bottomright::
+
+<v-click>
+
+### 4. 方法监控 - [JFR](https://openjdk.org/jeps/328) + [OpenTelemetry](https://spring.io/blog/2022/10/12/observability-with-spring-boot-3)
+
+<img src="/flame-graph.png" class="m-2 h-40 rounded shadow" />
+
+</v-click>
+
 
 ---
 layout: 2x2-grid-header
@@ -344,22 +383,43 @@ layout: 2x2-grid-header
 </v-click>
   
 ---
+layout: 2x2-grid-header
+---
 
 # Resources
 
-- ## 博客/周刊类
-  - [Inside Java](https://inside.java/)
-  - [Baeldung Weekly](https://www.baeldung.com/category/weekly-review)
-  - [Red Hat Developer Blog](https://developers.redhat.com/blog)
-  - [Oracle Blogs | Java](https://blogs.oracle.com/java/)
-  - [Java Annotated](https://blog.jetbrains.com/idea/tag/java-annotated/)
-- ## 官网类
-  - [Docker](https://www.docker.com/)
-  - [OpenJDK](https://openjdk.org/)
-  - [Spring Boot](https://docs.spring.io/spring-boot/)
-  - [Learn Java](https://dev.java/learn/)
-- ## PPT 制作工具
-  - [Slidev](https://cn.sli.dev/)
+::topleft::
+
+### 博客/周刊类
+
+- [Inside Java](https://inside.java/)
+- [Baeldung Weekly](https://www.baeldung.com/category/weekly-review)
+- [Red Hat Developer Blog](https://developers.redhat.com/blog)
+- [Oracle Blogs | Java](https://blogs.oracle.com/java/)
+- [Java Annotated](https://blog.jetbrains.com/idea/tag/java-annotated/)
+
+::topright::
+
+### 官网类
+
+- [Docker](https://www.docker.com/)
+- [OpenJDK](https://openjdk.org/)
+- [Spring Boot](https://docs.spring.io/spring-boot/)
+- [Learn Java](https://dev.java/learn/)
+
+::bottomleft::
+
+### 视频类
+
+- [Memory footprint of a Java process by Andrei Pangin](https://www.bilibili.com/video/BV14hemeoEkp)
+- [Fast and Lightweight Spring Boot Applications with GraalVM](https://www.bilibili.com/video/BV1Ju41147Nu)
+- [A Glance at The Java PerformanceToolbox](https://www.bilibili.com/video/BV1ga4y1u7HV)
+
+::bottomright::
+
+### PPT 制作工具
+
+- [Slidev](https://cn.sli.dev/)
 
 ---
 layout: center

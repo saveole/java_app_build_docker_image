@@ -188,49 +188,117 @@ Spring-Boot-Layers-Index: BOOT-INF/layers.idx
 # APM
 
 - 主机监控 - Node Exporter + [Prometheus](http://192.168.3.9:9090) + [Grafana](http://192.168.3.9:3000)
-- ~~容器监控 - Cadvisor~~
+- 容器监控 - Cadvisor
 - 应用监控 - [Spring-Boot-Admin](http://192.168.3.9:8080/applications)
 - 方法监控 - [JFR](https://openjdk.org/jeps/328) + [OpenTelemetry](https://spring.io/blog/2022/10/12/observability-with-spring-boot-3)
 
 ---
+layout: 2x2-grid-header
+---
 
 # Trouble Shooting
 
-- GC 日志
-  - [gceasy.io](https://www.gceasy.io/)
-  - [jifa](http://192.168.3.9:8102)
-- Heap dump
-  - mat
-  - [jifa](http://192.168.3.9:8102)
-- Thread dump
-  - [jifa](http://192.168.3.9:8102)
-  - jstack ${pid}
-- Native memory leak
-  - `-XX:NativeMemoryTracking=summary`
+::topleft::
+
+<v-click>
+
+### GC 日志
+
+- [gceasy.io](https://www.gceasy.io/)
+- [jifa](http://192.168.3.9:8102)
+</v-click>
+
+::topright::
+
+<v-click>
+
+### Heap dump
+
+- mat
+- [jifa](http://192.168.3.9:8102)
+
+</v-click>
+
+::bottomleft::
+
+<v-click>
+
+### Thread dump
+
+- [jifa](http://192.168.3.9:8102)
+- jstack ${pid}
+
+</v-click>
+
+::bottomright::
+<v-click>
+
+### Native memory leak
+
+- `-XX:NativeMemoryTracking=summary`
+
+</v-click>
 
 ---
 
 # Examples
 
 ---
+layout: 2x2-grid-header
+---
 
 # Summary
 
-- Dockerfile
+::topleft::
 
-  - <kbd>FROM</kbd>
-  - <kbd>COPY/ADD</kbd>
-  - <kbd>RUN</kbd>
-  - <kbd>ENV</kbd>
-  - <kbd>EXPOSE</kbd>
-  - <kbd>CMD/ENTRYPOINT</kbd>
+<v-click>
 
-- 构建 Java 应用程序镜像的几种方式
-  - <kbd>Fat jar</kbd> + <kbd>Full JDK</kbd>
-  - <kbd>Fat jar</kbd> + <kbd>Slim JDK</kbd>
-  - <kbd>Spring boot layers</kbd>
-  - <kbd>Spring boot native image</kbd>
+### 1. Dockerfile
 
+- <kbd>FROM</kbd>
+- <kbd>COPY/ADD</kbd>
+- <kbd>RUN</kbd>
+- <kbd>ENV/EXPOSE</kbd>
+- <kbd>CMD/ENTRYPOINT</kbd>
+
+</v-click>
+
+::topright::
+<v-click>
+
+### 2. 镜像构建通用原则
+
+- <kbd>轻量化</kbd>
+- <kbd>安全性</kbd>
+- <kbd>镜像分层</kbd>
+- <kbd>Dockerfile 可读性</kbd>
+
+</v-click>
+
+::bottomleft::
+<v-click>
+
+### 3. 普通 Java 应用镜像构建
+
+- <kbd>模块化</kbd>
+- <kbd>jdeps</kbd>
+- <kbd>jlink</kbd>
+- <kbd>native</kbd>
+
+</v-click>
+
+::bottomright::
+<v-click>
+
+### 4. Spring Boot 应用镜像构建
+
+- <kbd>Fat jar</kbd> + <kbd>Full JDK</kbd>
+- <kbd>Fat jar</kbd> + <kbd>Slim JDK</kbd>
+- <kbd>Spring boot layers</kbd>
+- <kbd>Spring boot native image</kbd>
+
+</v-click>
+  
 ---
 
 # Resources

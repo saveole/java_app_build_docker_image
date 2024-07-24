@@ -158,7 +158,7 @@ Spring-Boot-Layers-Index: BOOT-INF/layers.idx
 - 云原生时代下的容器化趋势
 - JVM 不能感知 <kbd>[cgoups](https://tech.meituan.com/2015/03/31/cgroups.html)</kbd>
 
-### 2. [Java 8.0_131 之后对容器的支持](https://blogs.oracle.com/java/post/java-on-container-like-a-pro)
+### 2. [since JDK10,8u191 对容器的支持](https://blogs.oracle.com/java/post/java-on-container-like-a-pro)
 
 - <kbd>[-XX:+UseContainerSupport](https://chriswhocodes.com)</kbd>
 - <kbd>[JVM default ergonomics](https://learn.microsoft.com/en-us/azure/developer/java/containers/overview)</kbd>
@@ -235,7 +235,8 @@ layout: 2x2-grid-header
 
 ### Native memory leak
 
-- `-XX:NativeMemoryTracking=summary`
+- `-XX:NativeMemoryTracking=[summary|detail]`
+- `jcmd PID VM.native_memory [detail]`
 
 </v-click>
 

@@ -80,6 +80,14 @@ services:
     ports:
       - 8080:8080
 
+  docker-stats:
+    image: dockerproxy.cn/virtualzone/docker-container-stats:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /home/ant/docker/storage/stats/db:/opt/docker-stats/db
+    ports:
+      - 8090:8080
+
   #cadvisor:
   #image: dockerproxy.cn/chainguard/cadvisor:latest
   #volumes:

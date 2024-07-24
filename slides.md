@@ -4,7 +4,7 @@ theme: academic
 layout: cover
 coverAuthor: saveole
 coverAuthorUrl: https://github.com/saveole
-coverBackgroundUrl: ./assets/cover.jpg
+coverBackgroundUrl: ./public/cover.jpg
 # coverBackgroundSource: unsplash
 coverBackgroundSourceUrl: https://images.unsplash.com/photo-1721736134606-984c6c961c04?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 # some information about your slides, markdown enabled
@@ -65,28 +65,39 @@ Here is another comment.
 
 Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. [learn more](https://docs.docker.com/guides/docker-overview/)
 
-<img src="https://dongshu.oss-cn-hangzhou.aliyuncs.com/scrm_front/0ccc911475124fe39df17a6fd97e5690docker-architecture.webp" />
-
-<style>
-img {
-  width: 100%;
-  height: 80%;
-}
-</style>
+<img src="/docker-architecture.webp" class="m-0 h-90 rounded shadow" />
 
 ---
 
 # Docker Client 的一些常用命令
 
-|                                                                                                                                                           |          |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| <kbd>pull</kbd> / <kbd>push</kbd> / <kbd>load</kbd> / <kbd>save</kbd>                                                                                     | 镜像相关 |
-| <kbd>run</kbd> / <kbd>exec</kbd> / <kbd>cp</kbd> / <kbd>ps</kbd> / <kbd>stats</kbd> / <kbd>inspect</kbd> / <kbd>logs</kbd>                                | 容器相关 |
-| <kbd>build</kbd> / <kbd>[镜像分层分阶段](https://docs.docker.com/build/guide/layers/)</kbd> / <kbd>[构建缓存](https://docs.docker.com/build/cache/)</kbd> | 构建相关 |
+<v-clicks>
 
+- 镜像相关: 
+  - <kbd>pull</kbd> / <kbd>push</kbd>
+  - <kbd>load</kbd> / <kbd>save</kbd>
+  - <kbd>history</kbd>
+- 容器相关: 
+  - <kbd>run</kbd> / <kbd>exec</kbd>
+  - <kbd>cp</kbd>
+  - <kbd>ps</kbd>
+  - <kbd>stats</kbd>
+  - <kbd>inspect</kbd>
+  - <kbd>logs</kbd>
+- 构建相关: 
+  - <kbd>build</kbd> / <kbd>[镜像分层分阶段](https://docs.docker.com/build/guide/layers/)</kbd> / <kbd>[构建缓存](https://docs.docker.com/build/cache/)</kbd>
+
+</v-clicks>
+
+---
+layout: two-cols-header
 ---
 
 # [Dockerfile](https://docs.docker.com/reference/dockerfile/)
+
+::left::
+
+<div class="text-sm pr-10 border-1 border-gray-200">
 
 |                           |                |
 | ------------------------- | -------------- |
@@ -98,6 +109,41 @@ img {
 | <kbd>ENV</kbd>            | 环境变量       |
 | <kbd>EXPOSE</kbd>         | 暴露端口       |
 | <kbd>CMD/ENTRYPOINT</kbd> | 运行容器的命令 |
+
+</div>
+
+::right::
+
+<div class="text-sm pl-5">
+
+```docker
+# From base image
+FROM dockerproxy.cn/eclipse-temurin:21 AS jre-build
+
+# Run some command to create a custom Java runtime
+RUN $JAVA_HOME/bin/jlink \
+         --add-modules java.base \
+         --strip-debug \
+         --no-man-pages \
+         --no-header-files \
+         --compress=2 \
+         --output /javaruntime
+
+# Define your base image as runtime base
+FROM dockerproxy.cn/debian:buster-slim
+
+# Setup JAVA_HOME
+ENV JAVA_HOME=/opt/java/openjdk
+ENV PATH "${JAVA_HOME}/bin:${PATH}"
+COPY --from=jre-build /javaruntime $JAVA_HOME
+
+WORKDIR /
+COPY HelloWorld.class /
+ENTRYPOINT java --enable-preview \
+        -XshowSettings:system -Xlog:gc=info HelloWorld
+```
+
+</div>
 
 ---
 
@@ -117,7 +163,7 @@ img {
 - application
 ```
 
-<kbd>application/META-INF/MANIFEST.MF</kbd>
+### <kbd>application/META-INF/MANIFEST.MF</kbd>
 
 ```shell
 Manifest-Version: 1.0
@@ -158,6 +204,10 @@ Spring-Boot-Layers-Index: BOOT-INF/layers.idx
 - 云原生时代下的容器化趋势
 - JVM 不能感知 <kbd>[cgoups](https://tech.meituan.com/2015/03/31/cgroups.html)</kbd>
 
+<v-click>
+
+<br/>
+
 ### 2. [since JDK10,8u191 对容器的支持](https://blogs.oracle.com/java/post/java-on-container-like-a-pro)
 
 - <kbd>[-XX:+UseContainerSupport](https://chriswhocodes.com)</kbd>
@@ -168,20 +218,13 @@ Spring-Boot-Layers-Index: BOOT-INF/layers.idx
 | m <= 1791MB <kbd>+</kbd> 任意 cpu | SerialGC |
 | m >= 1792MB <kbd>+</kbd> 2+ cpu   | G1GC     |
 
-- <kbd>不同容器环境的 GC 选择参考如下：</kbd>
+</v-click>
 
 ---
 
-| Factors             | SerialGC | ParallelGC                                 | G1GC               | ZGC                | ShenandoahGC       |
-| ------------------- | -------- | ------------------------------------------ | ------------------ | ------------------ | ------------------ |
-| CPU 核数            | 1        | 2                                          | 2                  | 2                  | 2                  |
-| 多线程              | No       | Yes                                        | Yes                | Yes                | Yes                |
-| 堆内存              | < 4g     | < 4g                                       | > 4g               | > 4g               | > 4g               |
-| 是否 STW            | Yes      | Yes                                        | Yes                | Yes(<1ms)          | Yes(<10ms)         |
-| 开销                | 低       | 低                                         | 中                 | 中                 | 中                 |
-| Tail-latency-Effect | 高       | 高                                         | 高                 | 低                 | 中                 |
-| JDK 版本            | All      | All                                        | JDK 8+             | JDK 17+            | JDK 11+            |
-| 适用场景            | 单核小堆 | 具有任何堆大小的多核小型堆或批处理工作负荷 | 延迟优先的中大型堆 | 延迟优先的中大型堆 | 延迟优先的中大型堆 |
+# 不同容器环境的 GC 选择参考如下：
+
+<img src="/Determine-GC.png" class="m-0 h-100 rounded shadow" />
 
 ---
 

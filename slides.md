@@ -190,6 +190,7 @@ Spring-Boot-Layers-Index: BOOT-INF/layers.idx
 - **Rebuild your images often** -> 更新依赖
 - **Exclude with .dockerignore** -> 指定忽略文件
 - **Don't install unnecessary packages** -> 减少体积
+- **Minimal number of layers** -> 减少分层数
 - **Sort multi-line arguments** -> 增加可读性
 - **Leverage build cache** -> 灵活使用构建缓存
 - **Pin base image versions** -> 镜像版本管理

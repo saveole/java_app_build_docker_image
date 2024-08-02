@@ -103,13 +103,14 @@ layout: two-cols-header
 | ------------------------- | -------------- |
 | <kbd>FROM</kbd>           | 定义基础镜像   |
 | <kbd>RUN</kbd>            | 在新层执行命令 |
-| <kbd>WORKDIR</kbd>        | 工作目录       |
-| <kbd>COPY/ADD</kbd>       | 拷贝文件       |
-| <kbd>ARG</kbd>            | 构建时参数     |
-| <kbd>ENV</kbd>            | 环境变量       |
-| <kbd>EXPOSE</kbd>         | 暴露端口       |
-| <kbd>CMD/ENTRYPOINT</kbd> | 运行容器的命令  |
-| <kbd>HEALTHCHECK</kbd>    | [健康检查](https://docs.docker.com/reference/dockerfile/#healthcheck)       |
+| <kbd>[WORKDIR](https://yeasy.gitbook.io/docker_practice/image/dockerfile/workdir)</kbd>        | 工作目录       |
+| <kbd>[COPY](https://yeasy.gitbook.io/docker_practice/image/dockerfile/copy)/[ADD](https://yeasy.gitbook.io/docker_practice/image/dockerfile/add)</kbd>       | 拷贝文件       |
+| <kbd>[ARG](https://yeasy.gitbook.io/docker_practice/image/dockerfile/arg)</kbd>            | 构建时参数     |
+| <kbd>[ENV](https://yeasy.gitbook.io/docker_practice/image/dockerfile/env)</kbd>            | 环境变量       |
+| <kbd>[EXPOSE](https://yeasy.gitbook.io/docker_practice/image/dockerfile/expose)</kbd>         | 暴露端口       |
+| <kbd>[CMD](https://yeasy.gitbook.io/docker_practice/image/dockerfile/cmd)/[ENTRYPOINT](https://yeasy.gitbook.io/docker_practice/image/dockerfile/entrypoint)</kbd> | 运行容器的命令  |
+| <kbd>[HEALTHCHECK](https://yeasy.gitbook.io/docker_practice/image/dockerfile/healthcheck)</kbd>    | [健康检查](https://docs.docker.com/reference/dockerfile/#healthcheck)       |
+| <kbd>[VOLUME](https://yeasy.gitbook.io/docker_practice/image/dockerfile/volume)</kbd>          | 数据卷           |
 
 </div>
 

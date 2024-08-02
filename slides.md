@@ -108,7 +108,8 @@ layout: two-cols-header
 | <kbd>ARG</kbd>            | 构建时参数     |
 | <kbd>ENV</kbd>            | 环境变量       |
 | <kbd>EXPOSE</kbd>         | 暴露端口       |
-| <kbd>CMD/ENTRYPOINT</kbd> | 运行容器的命令 |
+| <kbd>CMD/ENTRYPOINT</kbd> | 运行容器的命令  |
+| <kbd>HEALTHCHECK</kbd>    | [健康检查](https://docs.docker.com/reference/dockerfile/#healthcheck)       |
 
 </div>
 

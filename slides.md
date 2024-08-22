@@ -75,8 +75,8 @@ Docker is an open platform for developing, shipping, and running applications. D
 
 - 镜像相关:
   - <kbd>pull</kbd> / <kbd>push</kbd>
-  - <kbd>load</kbd> / <kbd>save</kbd>
-  - <kbd>history</kbd>
+  - <Tooltip tip="docker load < xxx.tar" content="load" /> / <Tooltip tip="docker save [id/tag] > xxx.tar" content="save" />
+  - <kbd>history</kbd> / <kbd>image/s</kbd>
 - 容器相关:
   - <kbd>run</kbd> / <kbd>exec</kbd>
   - <kbd>cp</kbd>

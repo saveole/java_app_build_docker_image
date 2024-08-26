@@ -93,7 +93,7 @@ Docker is an open platform for developing, shipping, and running applications. D
 layout: two-cols-header
 ---
 
-# [Dockerfile](https://docs.docker.com/reference/dockerfile/)
+## [Dockerfile](https://docs.docker.com/reference/dockerfile/)
 
 ::left::
 
@@ -393,7 +393,7 @@ layout: 2x2-grid-header
 
 ::topleft::
 
-### 博客/周刊类
+### 博客/周刊
 
 - [Inside Java](https://inside.java/)
 - [Baeldung Weekly](https://www.baeldung.com/category/weekly-review)
@@ -403,7 +403,7 @@ layout: 2x2-grid-header
 
 ::topright::
 
-### 官网类
+### 官网
 
 - [Docker](https://www.docker.com/)
 - [OpenJDK](https://openjdk.org/)
@@ -412,7 +412,7 @@ layout: 2x2-grid-header
 
 ::bottomleft::
 
-### 视频类
+### 视频
 
 - [Memory footprint of a Java process by Andrei Pangin](https://www.bilibili.com/video/BV14hemeoEkp)
 - [Fast and Lightweight Spring Boot Applications with GraalVM](https://www.bilibili.com/video/BV1Ju41147Nu)

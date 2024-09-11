@@ -165,7 +165,7 @@ ENTRYPOINT java --enable-preview \
 - application
 ```
 
-### <kbd>application/META-INF/MANIFEST.MF</kbd>
+### <Tooltip tip="当前云效流水线构建集群并不适用" content="application/META-INF/MANIFEST.MF" />
 
 ```shell
 Manifest-Version: 1.0

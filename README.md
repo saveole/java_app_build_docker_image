@@ -22,4 +22,4 @@ Learn more about Slidev on [documentations](https://sli.dev/).
 - [x] NativeMemoryTracking examples
 - [x] deploy: github action + github pages
 - [x] slidev: pagenation with theme [academic](https://github.com/alexanderdavide/slidev-theme-academic)
-- [ ] custome popup compoment for docker instruction examples.
+- [x] custome popup compoment for docker instruction examples.

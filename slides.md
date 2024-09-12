@@ -70,22 +70,47 @@ Docker is an open platform for developing, shipping, and running applications. D
 ---
 
 # Docker Client 的一些常用命令
-
+## 1.镜像相关
 <v-clicks>
 
-- 镜像相关:
-  - <kbd>pull</kbd> / <kbd>push</kbd>
-  - <Tooltip tip="docker load < xxx.tar" content="load" /> / <Tooltip tip="docker save [id/tag] > xxx.tar" content="save" />
-  - <kbd>history</kbd> / <kbd>image/s</kbd>
-- 容器相关:
-  - <kbd>run</kbd> / <kbd>exec</kbd>
-  - <kbd>cp</kbd>
-  - <kbd>ps</kbd>
-  - <kbd>stats</kbd>
-  - <kbd>inspect</kbd>
-  - <kbd>logs</kbd>
-- 构建相关:
-  - <kbd>build</kbd> / <kbd>[镜像分层分阶段](https://docs.docker.com/build/guide/layers/)</kbd> / <kbd>[构建缓存](https://docs.docker.com/build/cache/)</kbd>
+- <Tooltip tip="拉取镜像" content="pull" />
+- <Tooltip tip="将镜像推到仓库" content="push" />
+- <Tooltip tip="docker load < xxx.tar" content="load" />
+- <Tooltip tip="docker save [id/tag] > xxx.tar" content="save" />
+- <Tooltip tip="查看镜像构建分层历史" content="history" />
+- <Tooltip tip="docker image prune -a" content="image/s" />
+- <Tooltip tip="删除镜像" content="rmi" />
+
+</v-clicks>
+
+---
+
+# Docker Client 的一些常用命令
+## 2.容器相关
+<v-clicks>
+
+- <Tooltip tip="docker run --name xx -p 18080:8080 -v /path:/var/xx [image]" content="run" />
+- <Tooltip tip="docker exec -it [容器] sh" content="exec" />
+- <Tooltip tip="docker cp [容器]:/xx文件 xx文件" content="cp" />
+- <Tooltip tip="docker ps [-a]" content="ps" />
+- <Tooltip tip="docker stats" content="stats" />
+- <Tooltip tip="查看容器基本信息" content="inspect" />
+- <Tooltip tip="docker logs -f [容器]" content="logs" />
+- <Tooltip tip="删除停止运行的容器" content="rm" />
+- <Tooltip tip="运行/停止容器" content="start/stop" />
+
+</v-clicks>
+
+---
+
+
+# Docker Client 的一些常用命令
+## 3.构建相关
+<v-clicks>
+
+- <Tooltip tip="docker build -f Dockerfile -t [artifactId]:[version] ." content="build" />
+- <kbd>[镜像分层分阶段](https://docs.docker.com/build/guide/layers/)</kbd> 
+- <kbd>[构建缓存](https://docs.docker.com/build/cache/)</kbd>
 
 </v-clicks>
 

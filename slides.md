@@ -166,8 +166,9 @@ COPY --from=jre-build /javaruntime $JAVA_HOME
 
 WORKDIR /
 COPY HelloWorld.class /
-ENTRYPOINT java --enable-preview \
-        -XshowSettings:system -Xlog:gc=info HelloWorld
+ENTRYPOINT ["java" "--enable-preview" \
+        "-XshowSettings:system" "-Xlog:gc=info" \
+        "HelloWorld"]
 ```
 
 </div>

@@ -73,7 +73,7 @@ Docker is an open platform for developing, shipping, and running applications. D
 ## 1.镜像相关
 <v-clicks>
 
-- <Tooltip tip="拉取镜像" content="pull" />
+- <Tooltip tip="拉取镜像以及被墙了怎么办？" content="pull" />
 - <Tooltip tip="将镜像推到仓库" content="push" />
 - <Tooltip tip="docker load < xxx.tar" content="load" />
 - <Tooltip tip="docker save [id/tag] > xxx.tar" content="save" />
@@ -183,7 +183,7 @@ ENTRYPOINT java --enable-preview \
 # Spring Boot Layers
 
 ```shell
-# java -Djarmode=layertools -jar app.jar extract/list
+# java -Djarmode=layertools/tools -jar app.jar extract/list
 - dependencies
 - spring-boot-loader
 - snapshot-dependencies
@@ -208,6 +208,17 @@ Spring-Boot-Classpath-Index: BOOT-INF/classpath.idx
 Spring-Boot-Layers-Index: BOOT-INF/layers.idx
 ```
 
+---
+
+# Spring Boot CDS
+
+- Java CDS -> [Class Data Sharing](https://docs.oracle.com/en/java/javase/21/vm/class-data-sharing.html)
+- [Spring + CDS](https://docs.spring.io/spring-framework/reference/integration/cds.html#_creating_the_cds_archive)
+- Steps
+  1. 生成 CDS 数据: `java -Dspring.aot.enabled=true -Dspring.context.exit=onRefresh -XX:ArchiveClassesAtExit=app.jsa -jar app/app.jar`
+  2. 启动时加载 CDS 数据: `java -XX:SharedArchiveFile=app.jsa -jar app.jar`
+
+- [Spring AOT](https://docs.spring.io/spring-framework/reference/core/aot.html)
 ---
 
 # [Dockerfile 最佳实践](https://docs.docker.com/build/building/best-practices/)

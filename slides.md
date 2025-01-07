@@ -77,7 +77,7 @@ Docker is an open platform for developing, shipping, and running applications. D
 - <Tooltip tip="将镜像推到仓库" content="push" />
 - <Tooltip tip="docker load < xxx.tar" content="load" />
 - <Tooltip tip="docker save [id/tag] > xxx.tar" content="save" />
-- <Tooltip tip="查看镜像构建分层历史" content="history" />
+- <Tooltip tip="docker image history [id.tag]" content="history" />
 - <Tooltip tip="docker image prune -a" content="image/s" />
 - <Tooltip tip="删除镜像" content="rmi" />
 
@@ -232,6 +232,7 @@ Spring-Boot-Layers-Index: BOOT-INF/layers.idx
 - **Minimal number of layers** -> 减少分层数
 - **Sort multi-line arguments** -> 增加可读性
 - **Leverage build cache** -> 灵活使用构建缓存
+- **Offen changed goes last** -> 频繁变动的部分放最后
 - **Pin base image versions** -> 镜像版本管理
 - **Build and test your images in CI** -> 结合 CI/CD
 

@@ -16,6 +16,13 @@ Learn more about Slidev on [documentations](https://sli.dev/).
 - 逐步向实际应用靠近，使用真实项目示例进行演示
 - 再演示研究过的但现阶段项目不好落地的一些示例
 
+### Slidev 功能体验
+- 导出为 pptx 文件：
+    - npx playwright install
+    - slidev export --output java_docker_build --format pptx
+    - 优点：间接好看
+    - 缺点：动画丢失+自定义 hover 组件渲染丢失
+
 ### Roadmap
 
 - [x] JFR + JMC examples

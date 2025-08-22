@@ -184,7 +184,7 @@ ENTRYPOINT ["java" "--enable-preview" \
 # Spring Boot Layers
 
 ```shell
-# java -Djarmode=layertools/tools -jar app.jar extract/list
+# java -Djarmode=layertools -jar app.jar extract
 - dependencies
 - spring-boot-loader
 - snapshot-dependencies

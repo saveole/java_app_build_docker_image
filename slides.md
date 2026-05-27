@@ -4,7 +4,7 @@ theme: academic
 layout: cover
 coverAuthor: saveole
 coverAuthorUrl: https://github.com/saveole
-coverBackgroundUrl: /cover.jpg
+coverBackgroundUrl: cover.jpg
 # coverBackgroundSource: unsplash
 coverBackgroundSourceUrl: https://images.unsplash.com/photo-1721736134606-984c6c961c04?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 # some information about your slides, markdown enabled
@@ -65,7 +65,7 @@ Here is another comment.
 
 Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. [learn more](https://docs.docker.com/guides/docker-overview/)
 
-<img src="/docker-architecture.webp" class="m-0 h-90 rounded shadow" />
+<img src="docker-architecture.webp" class="m-0 h-90 rounded shadow" />
 
 ---
 
@@ -177,7 +177,7 @@ ENTRYPOINT ["java", "--enable-preview", \
 
 # 镜像分层
 
-<img src="/layers.png" class="m-0 h-90 rounded shadow" />
+<img src="layers.png" class="m-0 h-90 rounded shadow" />
 
 ---
 
@@ -265,7 +265,7 @@ Spring-Boot-Layers-Index: BOOT-INF/layers.idx
 
 # 不同容器环境的 GC 选择参考如下：
 
-<img src="/Determine-GC.png" class="m-0 h-100 rounded shadow" />
+<img src="Determine-GC.png" class="m-0 h-100 rounded shadow" />
 
 ---
 layout: 2x2-grid-header
@@ -280,7 +280,7 @@ layout: 2x2-grid-header
 
 ### 1. 主机监控 - [Node Exporter](http://192.168.3.9:3000)
 
-<img src="/node-exporter.png" class="m-2 h-40 rounded shadow" />
+<img src="node-exporter.png" class="m-2 h-40 rounded shadow" />
 
 </v-click>
 
@@ -290,7 +290,7 @@ layout: 2x2-grid-header
 
 ### 2. 容器监控 - [Cadvisor](http://192.168.3.9:8090)
 
-<img src="/stats.png" class="m-2 h-40 rounded shadow" />
+<img src="stats.png" class="m-2 h-40 rounded shadow" />
 
 </v-click>
 
@@ -300,7 +300,7 @@ layout: 2x2-grid-header
 
 ### 3. 应用监控 - [Spring-Boot-Admin](http://192.168.3.9:8080/applications)
 
-<img src="/spring-boot-admin.png" class="m-2 h-40 rounded shadow" />
+<img src="spring-boot-admin.png" class="m-2 h-40 rounded shadow" />
 
 </v-click>
 
@@ -310,7 +310,7 @@ layout: 2x2-grid-header
 
 ### 4. 方法监控 - [JFR](https://openjdk.org/jeps/328) + [OpenTelemetry](https://spring.io/blog/2022/10/12/observability-with-spring-boot-3)
 
-<img src="/flame-graph.png" class="m-2 h-40 rounded shadow" />
+<img src="flame-graph.png" class="m-2 h-40 rounded shadow" />
 
 </v-click>
 

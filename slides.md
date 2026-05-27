@@ -157,7 +157,7 @@ RUN $JAVA_HOME/bin/jlink \
          --output /javaruntime
 
 # Define your base image as runtime base
-FROM dockerproxy.cn/debian:buster-slim
+FROM dockerproxy.cn/debian:bookworm-slim
 
 # Setup JAVA_HOME
 ENV JAVA_HOME=/opt/java/openjdk
@@ -166,8 +166,8 @@ COPY --from=jre-build /javaruntime $JAVA_HOME
 
 WORKDIR /
 COPY HelloWorld.class /
-ENTRYPOINT ["java" "--enable-preview" \
-        "-XshowSettings:system" "-Xlog:gc=info" \
+ENTRYPOINT ["java", "--enable-preview", \
+        "-XshowSettings:system", "-Xlog:gc=info", \
         "HelloWorld"]
 ```
 
@@ -243,7 +243,7 @@ Spring-Boot-Layers-Index: BOOT-INF/layers.idx
 ### 1. 为什么需要支持容器化？
 
 - 云原生时代下的容器化趋势
-- JVM 不能感知 <kbd>[cgoups](https://tech.meituan.com/2015/03/31/cgroups.html)</kbd>
+- JVM 不能感知 <kbd>[cgroups](https://tech.meituan.com/2015/03/31/cgroups.html)</kbd>
 
 <v-click>
 
@@ -366,6 +366,95 @@ layout: 2x2-grid-header
 ---
 
 # Examples
+
+---
+
+layout: two-cols-header
+---
+
+## Example 1: 简单 Java 应用
+
+::left::
+
+### Dockerfile (JRE Alpine)
+
+```dockerfile
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /
+COPY HelloWorld.class /
+CMD ["java", "--enable-preview",
+     "-XshowSettings:system",
+     "-Xlog:gc=info", "HelloWorld"]
+```
+
+::right::
+
+### Dockerfile (jlink 多阶段构建)
+
+```dockerfile
+FROM eclipse-temurin:21 AS jre-build
+RUN $JAVA_HOME/bin/jlink \
+    --add-modules java.base,java.management,jdk.management \
+    --strip-debug --no-man-pages --no-header-files \
+    --compress=2 --output /javaruntime
+
+FROM debian:bookworm-slim
+ENV JAVA_HOME=/opt/java/openjdk
+ENV PATH "${JAVA_HOME}/bin:${PATH}"
+COPY --from=jre-build /javaruntime $JAVA_HOME
+WORKDIR /
+COPY HelloWorld.class /
+ENTRYPOINT ["java", "--enable-preview",
+    "-XshowSettings:system", "HelloWorld"]
+```
+
+---
+
+layout: two-cols-header
+---
+
+## Example 2: APM 监控栈 (docker-compose)
+
+::left::
+
+```yaml
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - ./grafana/:/etc/grafana/provisioning/
+    ports:
+      - 3000:3000
+    depends_on:
+      - prometheus
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+    ports:
+      - 9100:9100
+```
+
+::right::
+
+### 完整示例
+
+- Node Exporter -> 主机指标采集
+- Prometheus -> 指标存储与查询
+- Grafana -> 可视化仪表盘
+- Spring Boot Admin -> 应用监控
+- Docker Container Stats -> 容器资源统计
+
+> 完整配置见 `samples/apm/docker-compose.yml`
 
 ---
 layout: 2x2-grid-header
